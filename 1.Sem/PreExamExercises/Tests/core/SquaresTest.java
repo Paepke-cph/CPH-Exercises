@@ -79,6 +79,22 @@ public class SquaresTest {
     }
 
 
+    @Test
+    public void testSquaresRun_withValidInput() {
+        MockUI mock = new MockUI(new String[] {"5","X"});
+        Squares sq = new Squares(mock);
+        sq.run();
+        // 2 lines asking for input and 5 lines for the square.
+        int exp = 2 + 5;
+        Assert.assertEquals(exp,mock.getOutputsSize());
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void testSquaresRun_withInvalidInput() {
+        MockUI mock = new MockUI(new String[] {"abe","X"});
+        Squares sq = new Squares(mock);
+        sq.run();
+    }
 
 
 
